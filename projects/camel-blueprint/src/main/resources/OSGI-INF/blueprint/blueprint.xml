@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:camel="http://camel.apache.org/schema/blueprint"
+       xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+     <bean id="salesforce" class="org.apache.camel.component.salesforce.SalesforceComponent">
+    <property name="loginConfig">
+      <bean class="org.apache.camel.component.salesforce.SalesforceLoginConfig">
+       <property name="loginUrl" value="https://login.salesforce.com"></property>
+        <property name="clientId" value="3MVG9fMtCkV6eLhepJuasZZ7OzymyGMNikp2IxdqQ8H1Jx_uWNkSU5gIA9.mxSzlsGoNzEE18cy2XKPARvA_o"/>
+        <property name="clientSecret" value="7483376435449564293"/>
+        <property name="userName" value="kennethwpeeples@redhat.com"/>
+        <property name="password" value="redhat11"/>
+      </bean>
+    </property>
+  </bean>
+
+  <camelContext trace="true" id="blueprintContext" xmlns="http://camel.apache.org/schema/blueprint">
+  <route id="timerToLog">
+		 <from uri="direct:query" />
+         <to uri="salesforce:query?sObjectQuery=SELECT id,name from Opportunity&amp;sObjectClass=org.apache.camel.salesforce.dto.Opportunity.class" />  
+  		 <to uri="log: Query result back from Salesforce:${body}" />
+  </route>
+</camelContext>
+
+</blueprint>
