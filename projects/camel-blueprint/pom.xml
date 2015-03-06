@@ -170,6 +170,12 @@
           <useBlueprint>true</useBlueprint>
         </configuration>
       </plugin>
+        <!-- camel-salesforce-maven-plugin: allows Salesforce sObjects to be generated as DTO's -->
+      <plugin>
+          <groupId>org.apache.camel.maven</groupId>
+          <artifactId>camel-salesforce-maven-plugin</artifactId>
+          <version>2.12.0.redhat-610394</version>
+      </plugin>
     </plugins>
   </build>
 </project>
