@@ -2,6 +2,8 @@ JBoss Fuse Salesforce Connector Demo
 ======================================  
 The camel-blueprint project in the projects folder contains a simple project to run the salesforce connector.  
 
+![Architecture Overview](https://raw.githubusercontent.com/jbossdemocentral/fuse-components-salesforce/master/docs/demo-images/salesforcecrmerpsocialhub.PNG)
+
 Local Install Option:  
 ---------------------    
 
